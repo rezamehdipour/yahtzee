@@ -1,0 +1,114 @@
+// ————— Mixin(s) - [Mobile First] - [Based on Bootstrap] —————
+@mixin xsmall {
+	@media (max-width: 575px) {
+		@content;
+	}
+}
+@mixin small {
+	@media (min-width: 576px) /* and (max-width: 767px) */ {
+		@content;
+	}
+}
+@mixin medium {
+	@media (min-width: 768px) /* and (max-width: 991px) */ {
+		@content;
+	}
+}
+@mixin large {
+	@media (min-width: 992px) {
+		@content;
+	}
+}
+@mixin xlarge {
+	@media (min-width: 1140px) {
+		@content;
+	}
+}
+@mixin xxlarge {
+	@media (min-width: 1320px) {
+		@content;
+	}
+}
+
+// ————— Container —————
+.container {
+	width: calc(100% - 24px);
+
+	@include small() {
+		width: 540px;
+	}
+
+	@include medium() {
+		width: 720px;
+	}
+
+	@include large() {
+		width: 960px;
+	}
+
+	@include xlarge() {
+		width: 1140px;
+	}
+
+	@include xxlarge() {
+		width: 1320px;
+	}
+}
+
+// ————— Actual CSS —————
+:root {
+	--font-family: "Readex Pro", sans-serif;
+
+	--text-primary: #0f172a;
+	--text-secondary: #fff;
+
+	--headBackground: #10b981;
+
+	--bodyBackground: linear-gradient(
+		85deg,
+		rgba(34, 211, 238, 1) 0%,
+		rgba(96, 165, 250, 1) 100%
+	);
+}
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	font-family: var(--font-family);
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	position: relative;
+
+	font-size: 1.6rem;
+
+	color: var(--text-primary);
+	background: var(--bodyBackground);
+
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+}
+
+a {
+	display: inline-block;
+}
+
+// —————
+#root {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

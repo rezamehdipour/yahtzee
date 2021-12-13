@@ -1,0 +1,160 @@
+.dice {
+	width: 80px;
+	height: 80px;
+	background-color: white;
+	border-radius: 1rem;
+	padding: 1.5rem;
+	cursor: pointer;
+	&:not(.freez):hover {
+		background-color: rgb(235, 235, 235);
+	}
+	&.freez {
+		opacity: 0.5;
+	}
+
+	&.rolling:not(.freez) {
+		animation: rolling 1s ease-out;
+	}
+	@keyframes rolling {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.bullets {
+	display: grid;
+	height: 100%;
+
+	// 1
+	&.b1 {
+		align-items: center;
+		justify-items: center;
+	}
+	// 2
+	&.b2 {
+		grid-template-columns: 1fr 1fr;
+		justify-items: center;
+		align-items: center;
+	}
+	// 3
+	&.b3 {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		align-items: center;
+
+		.bullet {
+			&:nth-child(1) {
+				justify-self: start;
+				align-self: start;
+			}
+			&:nth-child(2) {
+				justify-self: center;
+			}
+			&:nth-child(3) {
+				justify-self: end;
+				align-self: end;
+			}
+		}
+	}
+	// 4
+	&.b4 {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+
+		.bullet {
+			&:nth-child(1),
+			&:nth-child(3) {
+				justify-self: start;
+			}
+			&:nth-child(1) {
+				align-self: start;
+			}
+			&:nth-child(3) {
+				align-self: end;
+			}
+			&:nth-child(2),
+			&:nth-child(4) {
+				justify-self: end;
+			}
+			&:nth-child(2) {
+				align-self: start;
+			}
+			&:nth-child(4) {
+				align-self: end;
+			}
+		}
+	}
+	// 5
+	&.b5 {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+
+		.bullet {
+			&:nth-child(1),
+			&:nth-child(4) {
+				justify-self: start;
+			}
+			&:nth-child(2),
+			&:nth-child(5) {
+				justify-self: end;
+			}
+			&:nth-child(3) {
+				grid-row: 2 / 3;
+				grid-column: 1 / -1;
+				align-self: center;
+				justify-self: center;
+			}
+			&:nth-child(1),
+			&:nth-child(2) {
+				align-self: start;
+			}
+			&:nth-child(4),
+			&:nth-child(5) {
+				align-self: end;
+			}
+		}
+	}
+	// 6
+	&.b6 {
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+
+		.bullet {
+			&:nth-child(1),
+			&:nth-child(4) {
+				justify-self: start;
+			}
+			&:nth-child(2),
+			&:nth-child(5) {
+				justify-self: center;
+			}
+			&:nth-child(3),
+			&:nth-child(6) {
+				justify-self: end;
+			}
+
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3) {
+				align-self: start;
+			}
+
+			&:nth-child(4),
+			&:nth-child(5),
+			&:nth-child(6) {
+				align-self: end;
+			}
+		}
+	}
+}
+
+.bullet {
+	width: 12px;
+	height: 12px;
+	background-color: var(--headBackground);
+	border-radius: 50%;
+}
